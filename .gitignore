@@ -1,0 +1,12 @@
+# This is a sample .gitignore file for the msgfuture project
+# Add file patterns to ignore here
+
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env

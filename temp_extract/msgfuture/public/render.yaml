@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: msgfuture
+    env: node
+    plan: free
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: future-message-db
+          property: connectionString
+      - key: NEXTAUTH_SECRET
+        generateValue: true
+      - key: NEXTAUTH_URL
+        value: https://msgfuture.onrender.com
+      - key: ENCRYPTION_KEY
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+
+databases:
+  - name: future-message-db
+    databaseName: msgfuture
+    user: msgfuture
+    plan: free
